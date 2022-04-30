@@ -7,7 +7,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import com.google.gson.Gson
 import com.suku.ezetap.R
-import com.suku.ezetap.ui.viewmodel.MainViewModel
 import com.suku.ezetap.utils.NetworkUtils
 import com.suku.ezetap.utils.showMessage
 import dagger.hilt.android.AndroidEntryPoint

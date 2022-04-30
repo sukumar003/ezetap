@@ -1,6 +1,6 @@
-package com.suku.ezetap.di
+package com.suku.network.di
 
-import com.suku.ezetap.data.network.ApiService
+import com.suku.network.data.network.ApiService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -14,7 +14,7 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-object NetworkModule {
+object Network {
 
     @Singleton
     @Provides

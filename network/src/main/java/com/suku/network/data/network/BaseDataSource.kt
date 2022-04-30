@@ -1,4 +1,4 @@
-package com.suku.ezetap.data.network
+package com.suku.network.data.network
 
 import retrofit2.Response
 

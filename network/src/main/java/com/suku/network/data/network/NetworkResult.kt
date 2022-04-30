@@ -1,4 +1,4 @@
-package com.suku.ezetap.data.network
+package com.suku.network.data.network
 
 sealed class NetworkResult<T>(val data: T? = null, val message: String? = null) {
     class Success<T>(data: T) : NetworkResult<T>(data)
