@@ -1,9 +1,13 @@
 package com.suku.ezetap.utils
 
-const val KEY_CLAIM_DATA = "com.suku.ezetap.utils.KEY_CLAIM_DATA"
-
 //widget types
-const val WIDGET_SPINNER = "DropDown"
-const val WIDGET_EDIT_TEXT_ALL_CAPS = "SingleLineTextAllCaps"
-const val WIDGET_EDIT_TEXT_NUMERIC = "SingleLineTextNumeric"
-const val WIDGET_EDIT_TEXT_SINGLE_LINE = "SingleLineText"
+const val WIDGET_TEXTVIEW = "label"
+const val WIDGET_EDIT_TEXT = "edittext"
+const val WIDGET_BUTTON = "button"
+
+//Edit Text Input Type
+const val INPUT_TYPE_NAME = "text_name"
+const val INPUT_TYPE_PHONE = "text_phone"
+const val INPUT_TYPE_CITY = "text_city"
+
+const val TAG_DATA="tag_data"

@@ -8,7 +8,8 @@ data class DynamicUiData (
 	@SerializedName("uidata") val uiData : List<UiData>
 )
 data class UiData (
-	@SerializedName("uitype") val uiType : String,
-	@SerializedName("value") val value : String,
-	@SerializedName("key") val key : String
+	@SerializedName("uitype") val uiType : String?,
+	@SerializedName("value") val value : String?,
+	@SerializedName("key") val key : String?,
+	@SerializedName("hint") val hint : String?
 )

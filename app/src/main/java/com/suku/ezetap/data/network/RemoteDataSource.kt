@@ -1,4 +1,4 @@
-package com.suku.network.data.network
+package com.suku.ezetap.data.network
 
 import com.suku.network.data.model.DynamicUiData
 import com.suku.network.data.network.ApiService
@@ -9,9 +9,15 @@ import javax.inject.Inject
 class RemoteDataSource @Inject constructor(private val apiInterface: ApiService) :
     BaseDataSource() {
 
-    suspend fun getEmployees(url: String): NetworkResult<DynamicUiData> {
+    suspend fun getCustomUiJSON(url: String): NetworkResult<DynamicUiData> {
         return invokeApiRequest(apiCall = {
             apiInterface.fetchCustomUI(url)
+        })
+    }
+
+    suspend fun getCustomImage(url: String): NetworkResult<String> {
+        return invokeApiRequest(apiCall = {
+            apiInterface.fetchImage(url)
         })
     }
 }

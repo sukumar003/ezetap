@@ -3,6 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Android/GitHub_Apr2022/ezetap/app/src/main/res/layout/activity_main.xml" value="0.18206521739130435" />
+        <entry key="..\:/Android/GitHub_Apr2022/ezetap/app/src/main/res/layout/activity_second.xml" value="0.18206521739130435" />
+        <entry key="..\:/Android/GitHub_Apr2022/ezetap/app/src/main/res/layout/widget_button.xml" value="0.18206521739130435" />
+        <entry key="..\:/Android/GitHub_Apr2022/ezetap/app/src/main/res/layout/widget_textinput.xml" value="0.18206521739130435" />
+        <entry key="..\:/Android/GitHub_Apr2022/ezetap/app/src/main/res/layout/widget_textview.xml" value="0.18206521739130435" />
         <entry key="..\:/Android/GitHub_Apr2022/ezetap/ezetap/app/src/main/res/layout/activity_main.xml" value="0.16847826086956522" />
       </map>
     </option>
