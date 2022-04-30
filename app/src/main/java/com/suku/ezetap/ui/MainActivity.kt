@@ -4,7 +4,6 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.text.InputType
-import android.util.Log
 import android.view.View
 import android.widget.LinearLayout
 import androidx.activity.viewModels
@@ -12,7 +11,6 @@ import androidx.databinding.DataBindingUtil
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textview.MaterialTextView
-import com.google.gson.Gson
 import com.suku.ezetap.R
 import com.suku.ezetap.data.network.model.RequestUiData
 import com.suku.ezetap.databinding.ActivityMainBinding
@@ -48,9 +46,8 @@ class MainActivity : BaseActivity() {
         mainViewModel.dynamicDatas.observe(this) { result ->
 
             when (result) {
-                is NetworkResult.Loading -> {
-                    showProgressBar(true)
-                }
+                is NetworkResult.Loading -> showProgressBar(true)
+
                 is NetworkResult.Success -> {
                     dynamicUiData = result.data
                     showProgressBar()
@@ -58,10 +55,11 @@ class MainActivity : BaseActivity() {
                 }
                 is NetworkResult.Failure -> {
                     showProgressBar()
-                    Log.d("ERROR", "" + result.message)
+                    showMessage("${result.message}")
                 }
                 else -> {
                     showProgressBar()
+                    showMessage("${result.message}")
                 }
             }
         }
@@ -123,21 +121,10 @@ class MainActivity : BaseActivity() {
             layoutParams = mParams
             text = uiData.value ?: "Submit"
             setOnClickListener {
-                val status = validation()
-                if (status) {
-                    val list = getDataFromView()
-                    Log.d("Button -->", Gson().toJson(list))
-                    navigateToIntent(list)
-                }
+                if (validation()) navigateToIntent(getDataFromView())
             }
         }
         mainBinding.root.addView(button)
-    }
-
-    private fun navigateToIntent(list: ArrayList<RequestUiData>) {
-        val bundle = Bundle()
-        bundle.putParcelableArrayList(TAG_DATA, list)
-        startActivity(Intent(this, SecondActivity::class.java).putExtras(bundle))
     }
 
     private fun getInputType(inputType: String?): Int {
@@ -191,4 +178,12 @@ class MainActivity : BaseActivity() {
         }
         return requestDataList
     }
+
+    private fun navigateToIntent(list: ArrayList<RequestUiData>) {
+        val bundle = Bundle()
+        bundle.putParcelableArrayList(TAG_DATA, list)
+        bundle.putString(TAG_IMAGE_URL, dynamicUiData?.logo_url)
+        startActivity(Intent(this, SecondActivity::class.java).putExtras(bundle))
+    }
+
 }

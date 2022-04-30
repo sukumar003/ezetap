@@ -15,6 +15,7 @@ class RemoteDataSource @Inject constructor(private val apiInterface: ApiService)
         })
     }
 
+    //don't need this method. getCustomUiJSON() function returning image URL.
     suspend fun getCustomImage(url: String): NetworkResult<String> {
         return invokeApiRequest(apiCall = {
             apiInterface.fetchImage(url)

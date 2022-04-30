@@ -10,4 +10,5 @@ const val INPUT_TYPE_NAME = "text_name"
 const val INPUT_TYPE_PHONE = "text_phone"
 const val INPUT_TYPE_CITY = "text_city"
 
-const val TAG_DATA="tag_data"
+const val TAG_DATA = "tag_data"
+const val TAG_IMAGE_URL = "image_url"

@@ -6,8 +6,6 @@ open class BaseDataSource {
     suspend fun <T> invokeApiRequest(
         apiCall: suspend () -> Response<T>
     ): NetworkResult<T> {
-        //pass default error msg if u want via constructor
-        //var errorMsg = errorMessage
         try {
             val response = apiCall()
             if (response.isSuccessful) {

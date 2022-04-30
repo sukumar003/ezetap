@@ -11,6 +11,8 @@ import com.suku.ezetap.data.network.model.RequestUiData
 import com.suku.ezetap.databinding.ActivitySecondBinding
 import com.suku.ezetap.ui.viewmodel.SecondViewModel
 import com.suku.ezetap.utils.TAG_DATA
+import com.suku.ezetap.utils.TAG_IMAGE_URL
+import com.suku.ezetap.utils.loadImage
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -24,6 +26,11 @@ class SecondActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         mainBinding = DataBindingUtil.setContentView(this, R.layout.activity_second)
 
+        //show image
+        intent.getStringExtra(TAG_IMAGE_URL)?.let {
+            mainBinding.imageView.loadImage(it)
+        }
+        //show result data
         generateForm(intent.getParcelableArrayListExtra(TAG_DATA))
     }
 

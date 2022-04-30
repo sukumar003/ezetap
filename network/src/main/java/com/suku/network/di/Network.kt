@@ -1,5 +1,6 @@
 package com.suku.network.di
 
+import com.suku.network.BuildConfig
 import com.suku.network.data.network.ApiService
 import dagger.Module
 import dagger.Provides
@@ -18,23 +19,28 @@ object Network {
 
     @Singleton
     @Provides
-    fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit {
+    fun provideRetrofit(okHttpBuilder: OkHttpClient.Builder): Retrofit {
         return Retrofit.Builder()
             .baseUrl("https://demo.ezetap.com/")
-            .client(okHttpClient)
+            .client(
+                okHttpBuilder.connectTimeout(60, TimeUnit.SECONDS)
+                    .readTimeout(60, TimeUnit.SECONDS)
+                    .writeTimeout(60, TimeUnit.SECONDS).build()
+            )
             .addConverterFactory(GsonConverterFactory.create())
             .build()
     }
 
     @Singleton
     @Provides
-    fun provideOkHttp(): OkHttpClient {
-        val loggingInterceptor = HttpLoggingInterceptor()
-        loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY)
-        return OkHttpClient.Builder()
-            .readTimeout(15, TimeUnit.SECONDS)
-            .connectTimeout(15, TimeUnit.SECONDS)
-            .addInterceptor(loggingInterceptor).build()
+    fun provideOkHttp(): OkHttpClient.Builder {
+        val okHttpClientBuilder: OkHttpClient.Builder = OkHttpClient.Builder()
+        if (BuildConfig.DEBUG) {
+            val loggingInterceptor =
+                HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
+            okHttpClientBuilder.addInterceptor(loggingInterceptor)
+        }
+        return okHttpClientBuilder
     }
 
     @Singleton

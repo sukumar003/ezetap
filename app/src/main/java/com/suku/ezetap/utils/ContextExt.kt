@@ -11,11 +11,11 @@ import androidx.annotation.StringRes
 import androidx.core.content.ContextCompat
 import com.suku.ezetap.BuildConfig
 
-fun Activity.logd(message: String){
+fun Activity.load(message: String) {
     if (BuildConfig.DEBUG) Log.d(this::class.java.simpleName, message)
 }
 
-fun Activity.loge(message: String){
+fun Activity.loge(message: String) {
     if (BuildConfig.DEBUG) Log.e(this::class.java.simpleName, message)
 }
 
@@ -41,4 +41,3 @@ fun Context.showMessage(@StringRes resId: Int, duration: Int = Toast.LENGTH_SHOR
 fun Context.showMessage(text: String?, duration: Int = Toast.LENGTH_SHORT) {
     Toast.makeText(this, text.orEmpty(), duration).show()
 }
-
